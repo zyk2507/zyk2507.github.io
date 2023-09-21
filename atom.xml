@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-09-21T03:34:09.405Z</updated>
+  <updated>2023-09-21T07:07:07.611Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HNOI2012_矿场搭建</title>
+    <link href="http://example.com/2023/09/21/HNOI2012-%E7%9F%BF%E5%9C%BA%E6%90%AD%E5%BB%BA/"/>
+    <id>http://example.com/2023/09/21/HNOI2012-%E7%9F%BF%E5%9C%BA%E6%90%AD%E5%BB%BA/</id>
+    <published>2023-09-21T07:07:07.000Z</published>
+    <updated>2023-09-21T07:07:07.611Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://example.com/2023/09/21/HNOI2012_%E7%9F%BF%E5%9C%BA%E6%90%AD%E5%BB%BA/"/>
+    <id>http://example.com/2023/09/21/HNOI2012_%E7%9F%BF%E5%9C%BA%E6%90%AD%E5%BB%BA/</id>
+    <published>2023-09-21T07:06:13.897Z</published>
+    <updated>2023-09-21T07:06:13.897Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="HNOI2012-矿场搭建"><a href="#HNOI2012-矿场搭建" class="headerlink" title="[HNOI2012] 矿场搭建"></a>[HNOI2012] 矿场搭建</h1><h1 id="HNOI2012-矿场搭建-1"><a href="#HNOI2012-矿场搭建-1" class="headerlink" title="[HNOI2012] 矿场搭建"></a>[HNOI2012] 矿场搭建</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>煤矿工地可以看成是由隧道连接挖煤点组成的无向图。为安全起见，希望在工地发生事故时所有挖煤点的工人都能有一条出路逃到救援出口处。于是矿主决定在某些挖煤点设立救援出口，使得无论哪一个挖煤点坍塌之后，其他挖煤点的工人都有一条道路通向救援出口。</p><p>请写一个程序，用来计算至少需要设置几个救援出口，以及不同最少救援出口的设置方案总数。</p><h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>输入文件有若干组数据。</p><p>每组数据的第一行是一个正整数 $N\ (N \le 500)$，表示工地的隧道数。</p><p>接下来的 $N$ 行每行是用空格隔开的两个整数 $S$ 和 $T$，表示挖煤点 $S$ 与挖煤点 $T$ 由隧道直接连接。</p><p>输入数据以 $0$ 结尾。</p><h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>对于每组数据，输出一行。</p><p>第 $i$ 行组数据以 $\verb!Case i: !$ 开始（注意大小写，$\verb!Case!$ 与 $\verb!i!$ 之间有空格，$\verb!i!$ 与 $\verb!:!$ 之间无空格，$\verb!:!$ 之后有空格）。</p><p>其后是用空格隔开的两个正整数，第一个正整数表示对于第 $i$ 组输入数据至少需要设置几个救援出口，第二个正整数表示对于第 $i$ 组输入数据不同最少救援出口的设置方案总数。</p><p>输入数据保证答案小于 $2^{64}$。输出格式参照以下输入输出样例。</p><h2 id="样例-1"><a href="#样例-1" class="headerlink" title="样例 #1"></a>样例 #1</h2><h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><pre class="line-numbers language-none"><code class="language-none">91 34 13 51 22 61 56 31 63 261 21 32 42 53 63 70</code></pre><h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><pre class="line-numbers language-none"><code class="language-none">Case 1: 2 4Case 2: 4 1</code></pre><h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><h3 id="样例解释"><a href="#样例解释" class="headerlink" title="样例解释"></a>样例解释</h3><ul><li>Case 1 的四组解分别是 $(2,4)$，$(3,4)$，$(4,5)$，$(4,6)$；</li><li>Case 2 的一组解为 $(4,5,6,7)$。</li></ul><h3 id="数据范围及约定"><a href="#数据范围及约定" class="headerlink" title="数据范围及约定"></a>数据范围及约定</h3><p>对于每组数据，设 $m$ 为各组 $S, T$ 中最大值，则有：</p><ul><li><p>$1 \le m \le 10^3$；</p></li><li><p>各组 $S, T$ 构成的集合 $V &#x3D; [1, m] \cap \mathbb Z$。</p></li><li><p>$V$ 中任意两点连通。</p><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;bits&#x2F;stdc++.h&gt;#define N 11111using namespace std;using ll &#x3D; long long;struct edge&#123;    int u, v, to;&#125;e[N];int n, m;int idx, head[N];inline void addedge(int u, int v)&#123;    e[idx].v &#x3D; v;    e[idx].u &#x3D; u;    e[idx].to &#x3D; head[u];    head[u] &#x3D; idx++;&#125;int dfn[N], low[N], tidx;bitset&lt;N&gt; cut;void tarjan(int u, int from)&#123;    dfn[u] &#x3D; ++tidx;    low[u] &#x3D; dfn[u];    int child &#x3D; 0;    for(int i &#x3D; head[u]; ~i; i &#x3D; e[i].to)    &#123;        int v &#x3D; e[i].v;        if(!dfn[v])        &#123;            tarjan(v, u);            low[u] &#x3D; min(low[u], low[v]);            if(low[v] &gt;&#x3D; dfn[u])            &#123;                child++;                if(u !&#x3D; from || child &gt; 1) cut[u] &#x3D; true;            &#125;        &#125;else        &#123;            if(v !&#x3D; from) low[u] &#x3D; min(low[u], dfn[v]);        &#125;    &#125;&#125;int grp[N], gidx;int cnt_not_cut &#x3D; 0, cnt_cut &#x3D; 0;void dfs(int u)&#123;    grp[u] &#x3D; gidx;    cnt_not_cut++;    for(int i &#x3D; head[u]; ~i; i &#x3D; e[i].to)    &#123;        int v &#x3D; e[i].v;        if(cut[v] &amp;&amp; grp[v] !&#x3D; gidx)        &#123;            cnt_cut++;            grp[v] &#x3D; gidx;        &#125;        if(!grp[v]) dfs(v);    &#125;&#125;int cntti &#x3D; 0;inline bool sol()&#123;    cin &gt;&gt; m;    if(m &#x3D;&#x3D; 0) return false;    memset(head, -1, sizeof head);    memset(dfn, 0, sizeof dfn);    memset(low, 0, sizeof low);    memset(grp, 0, sizeof grp);    memset(e, 0, sizeof e);    cut.reset();    idx &#x3D; 0, tidx &#x3D; 0, gidx &#x3D; 0;    cnt_not_cut &#x3D; 0, cnt_cut &#x3D; 0;    cntti++;    n &#x3D; -1;    for(int i &#x3D; 1; i &lt;&#x3D; m; i++)    &#123;        int u, v; cin &gt;&gt; u &gt;&gt; v;        n &#x3D; max(max(u, v), n);        addedge(u, v), addedge(v, u);    &#125;    for(int i &#x3D; 1; i &lt;&#x3D; n; i++)    &#123;        if(!dfn[i])        &#123;            tarjan(i, i);        &#125;    &#125;&#x2F;&#x2F;    cout &lt;&lt; &quot;\n&quot;;&#x2F;&#x2F;    for(int i &#x3D; 1; i &lt;&#x3D; n; i++) cout &lt;&lt; cut[i] &lt;&lt; &quot; &quot;;&#x2F;&#x2F;    cout &lt;&lt; &quot;\n&quot;;&#x2F;&#x2F;    ll ans &#x3D; 1, cnt &#x3D; 0;    for(int i &#x3D; 1; i &lt;&#x3D; n; i++)    &#123;        if(!grp[i] &amp;&amp; !cut[i])        &#123;            ++gidx;            cnt_cut &#x3D; 0;            cnt_not_cut &#x3D; cnt_cut;            dfs(i);            if(cnt_cut &#x3D;&#x3D; 0)            &#123;                cnt +&#x3D; 2;                ans *&#x3D; (cnt_not_cut - 1) * cnt_not_cut &#x2F; 2;            &#125;            if(cnt_cut &#x3D;&#x3D; 1)            &#123;                cnt +&#x3D; 1;                ans *&#x3D; cnt_not_cut;            &#125;        &#125;    &#125;    cout &lt;&lt; &quot;Case &quot; &lt;&lt; cntti &lt;&lt; &quot;: &quot; &lt;&lt; cnt &lt;&lt; &quot; &quot; &lt;&lt; ans &lt;&lt; &quot;\n&quot;;    return true;&#125;int main()&#123;    while(sol());    return 0;&#125;</code></pre></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;HNOI2012-矿场搭建&quot;&gt;&lt;a href=&quot;#HNOI2012-矿场搭建&quot; class=&quot;headerlink&quot; title=&quot;[HNOI2012] 矿场搭建&quot;&gt;&lt;/a&gt;[HNOI2012] 矿场搭建&lt;/h1&gt;&lt;h1 id=&quot;HNOI2012-矿场搭建-1&quot;&gt;</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
